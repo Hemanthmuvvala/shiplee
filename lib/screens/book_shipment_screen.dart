@@ -5,6 +5,8 @@ import '../services/courier_service.dart';
 import 'payment_screen.dart';
 
 class BookShipmentScreen extends StatefulWidget {
+  const BookShipmentScreen({super.key});
+
   @override
   _BookShipmentScreenState createState() => _BookShipmentScreenState();
 }
@@ -23,12 +25,12 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book a Shipment'),
+        title: const Text('Book a Shipment'),
       ),
       body: _isLoading 
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -59,7 +61,7 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
                       keyboardType: TextInputType.number,
                     ),
                     
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     
                     // Delivery Address Section
                     _buildSectionTitle('Delivery Details'),
@@ -86,7 +88,7 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
                       keyboardType: TextInputType.number,
                     ),
                     
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     
                     // Package Details
                     _buildSectionTitle('Package Details'),
@@ -96,12 +98,12 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
                       keyboardType: TextInputType.number,
                     ),
                     
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     
                     // Courier Selection
                     _buildSectionTitle('Select Courier'),
                     DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       ),
@@ -120,22 +122,22 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
                       },
                     ),
                     
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     
                     // Price Calculation
                     Container(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Column(
                         children: [
-                          Text(
+                          const Text(
                             'Estimated Price',
                             style: TextStyle(fontSize: 16),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text(
                             '₹${_estimatedPrice.toStringAsFixed(2)}',
                             style: TextStyle(
@@ -148,11 +150,11 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
                       ),
                     ),
                     
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     
                     // Calculate Button
                     ElevatedButton(
-                      child: Text('Calculate Price'),
+                      child: const Text('Calculate Price'),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
@@ -161,15 +163,14 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
                       },
                     ),
                     
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     
                     // Proceed to Payment Button
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white, backgroundColor: Theme.of(context).primaryColor,
-                        padding: EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
-                      child: Text('Proceed to Payment'),
                       onPressed: _estimatedPrice > 0
                           ? () {
                               if (_formKey.currentState!.validate()) {
@@ -186,6 +187,7 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
                               }
                             }
                           : null,
+                      child: const Text('Proceed to Payment'),
                     ),
                   ],
                 ),
@@ -196,10 +198,10 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
 
   Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 8, top: 8),
+      padding: const EdgeInsets.only(bottom: 8, top: 8),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
@@ -214,12 +216,12 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 12),
       child: TextFormField(
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
-          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          border: const OutlineInputBorder(),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         ),
         keyboardType: keyboardType,
         validator: isRequired

@@ -1,23 +1,24 @@
-// main.dart
+
 import 'package:flutter/material.dart';
-//import 'package:shiplee/screens/payment_screen.dart';
-import 'screens/home_screen.dart';
+import 'package:shiplee/practice/listviewbuilder.dart';
+// import 'package:shiplee/practice/mailhomescreen.dart';
+
+
+
 
 void main() {
-  runApp(ShipmentApp());
+  runApp(const ShipmentApp());
 }
 
 class ShipmentApp extends StatelessWidget {
+   const ShipmentApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Shipment Booking App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        useMaterial3: true,
-      ),
-      home: HomeScreen(),
+      debugShowCheckedModeBanner:false,
+      home:   Listviewbuilder(),
     );
   }
 }

@@ -124,25 +124,25 @@ class ConfirmationScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     _buildDetailRow(
                       icon: Icons.local_shipping,
                       title: 'Courier',
                       value: shipment.courier ?? '',
                     ),
-                    Divider(),
+                    const Divider(),
                     _buildDetailRow(
                       icon: Icons.location_on,
                       title: 'From',
                       value: '${shipment.pickupCity}, ${shipment.pickupPostalCode}',
                     ),
-                    Divider(),
+                    const Divider(),
                     _buildDetailRow(
                       icon: Icons.flag,
                       title: 'To',
                       value: '${shipment.deliveryCity}, ${shipment.deliveryPostalCode}',
                     ),
-                    Divider(),
+                    const Divider(),
                     _buildDetailRow(
                       icon: Icons.money,
                       title: 'Amount Paid',
@@ -160,10 +160,10 @@ class ConfirmationScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
-              child: Text('Back to Home'),
+              child: const Text('Back to Home'),
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
                   (route) => false,
                 );
               },
@@ -180,11 +180,11 @@ class ConfirmationScreen extends StatelessWidget {
     required String value,
   }) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
           Icon(icon, size: 22, color: Colors.grey[600]),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -195,10 +195,10 @@ class ConfirmationScreen extends StatelessWidget {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 2),
+              const SizedBox(height: 2),
               Text(
                 value,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),

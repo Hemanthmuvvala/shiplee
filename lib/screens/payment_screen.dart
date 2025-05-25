@@ -7,7 +7,7 @@ import 'confirmation_screen.dart';
 class PaymentScreen extends StatefulWidget {
   final Shipment shipment;
   
-  const PaymentScreen({Key? key, required this.shipment}) : super(key: key);
+  const PaymentScreen({super.key, required this.shipment});
 
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
@@ -27,12 +27,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment'),
+        title: const Text('Payment'),
       ),
       body: _isProcessing
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -41,25 +41,25 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     // Order Summary
                     Card(
                       elevation: 4,
-                      margin: EdgeInsets.only(bottom: 20),
+                      margin: const EdgeInsets.only(bottom: 20),
                       child: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Order Summary',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 12),
+                            const SizedBox(height: 12),
                             _buildSummaryRow('Courier', widget.shipment.courier ?? ''),
                             _buildSummaryRow('From', '${widget.shipment.pickupCity}'),
                             _buildSummaryRow('To', '${widget.shipment.deliveryCity}'),
                             _buildSummaryRow('Weight', '${widget.shipment.weight} kg'),
-                            Divider(),
+                            const Divider(),
                             _buildSummaryRow(
                               'Total Amount',
                               '₹${widget.shipment.price.toStringAsFixed(2)}',
@@ -71,14 +71,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                     
                     // Payment Form
-                    Text(
+                    const Text(
                       'Payment Details',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     
                     _buildTextField(
                       label: 'Card Holder Name',
@@ -101,7 +101,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             maxLength: 5,
                           ),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: _buildTextField(
                             label: 'CVV',
@@ -114,15 +114,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ],
                     ),
                     
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white, backgroundColor: Theme.of(context).primaryColor,
-                        padding: EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
-                      child: Text('Pay ₹${widget.shipment.price.toStringAsFixed(2)}'),
                       onPressed: _processPayment,
+                      child: Text('Pay ₹${widget.shipment.price.toStringAsFixed(2)}'),
                     ),
                   ],
                 ),
@@ -133,7 +133,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   Widget _buildSummaryRow(String label, String value, {bool isTotal = false}) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -165,11 +165,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
     bool obscureText = false,
   }) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 16),
       child: TextFormField(
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           counterText: '',
         ),
         keyboardType: keyboardType,
@@ -215,7 +215,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Payment failed. Please try again.')),
+            const SnackBar(content: Text('Payment failed. Please try again.')),
           );
         }
       } catch (e) {

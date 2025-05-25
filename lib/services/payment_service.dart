@@ -8,7 +8,7 @@ class PaymentService {
     required String cardHolderName,
   }) async {
    
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     
     
     if (cardNumber.length != 16 || cvv.length != 3) {
